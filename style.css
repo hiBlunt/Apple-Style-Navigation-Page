@@ -1,0 +1,434 @@
+:root {
+    --bg-color: #f5f5f7;
+    --card-bg: #ffffff;
+    --text-primary: #1d1d1f;
+    --text-secondary: #86868b;
+    --accent-blue: #0066cc;
+    --app-icon-radius: 18px; /* Classic Apple Squircle ratio for 64px */
+    --nav-blur: 30px;
+    --navbar-height: 56px;
+    --system-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--system-font);
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow-y: scroll;
+}
+
+/* Navbar: Mac App Store Style */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    background: rgba(245, 245, 247, 0.72);
+    backdrop-filter: saturate(180%) blur(var(--nav-blur));
+    -webkit-backdrop-filter: saturate(180%) blur(var(--nav-blur));
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.08); /* Subtle border */
+}
+
+.nav-content {
+    max-width: 1440px; /* Wider for 4K */
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.nav-brand {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.nav-search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box {
+    position: relative;
+    width: 320px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: #86868b;
+}
+
+.search-box input {
+    width: 100%;
+    background: rgba(0,0,0,0.06);
+    border: none;
+    border-radius: 8px; /* Mac style rounded rect */
+    padding: 8px 12px 8px 36px;
+    font-size: 14px;
+    color: var(--text-primary);
+    transition: all 0.2s;
+}
+
+.search-box input::placeholder {
+    color: #86868b;
+}
+
+.search-box input:focus {
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nav-edit {
+    background: none;
+    border: none;
+    color: var(--accent-blue);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-edit:hover {
+    text-decoration: underline;
+}
+
+/* Main Layout */
+.container {
+    max-width: 1440px; /* Optimized for 4K */
+    margin: var(--navbar-height) auto 0;
+    padding: 60px 40px 100px;
+}
+
+/* Section Grouping */
+#mainContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 0 60px;
+    align-items: start;
+}
+
+.featured-section {
+    grid-column: 1 / -1;
+}
+
+.category-section {
+    margin-bottom: 60px;
+    min-width: 0;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    padding-bottom: 12px;
+}
+
+.category-title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: var(--text-primary);
+}
+
+/* Featured Horizontal Scroll / Bento (App Store 'Discover' style) */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.featured-card {
+    position: relative;
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-primary);
+    height: 180px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    padding: 30px;
+}
+
+.featured-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.03) 100%);
+    pointer-events: none;
+}
+
+.featured-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+.featured-card .title-group {
+    display: flex;
+    flex-direction: column;
+    max-width: 65%;
+    position: relative;
+    z-index: 1;
+}
+
+.featured-card .title-group h3 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+}
+
+.featured-card .title-group p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.featured-card .icon-wrapper {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: var(--app-icon-radius);
+    flex-shrink: 0;
+}
+
+.featured-card .icon-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: inherit;
+}
+
+/* High Density App Grid (Glanceability) */
+.app-grid {
+    display: grid;
+    /* Ultra high density for 4K. 80px min size allows huge numbers of icons */
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 32px 16px;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.app-item:hover {
+    transform: scale(1.05);
+}
+
+.app-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--app-icon-radius);
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 1px rgba(0,0,0,0.1) inset;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.app-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.app-name {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+/* Edit Mode Overlay - iOS Style Jiggle */
+.edit-badge {
+    position: absolute;
+    top: -6px;
+    left: -6px; /* Positioned top left like iOS */
+    width: 24px;
+    height: 24px;
+    background: #e3e3e6;
+    border: 1px solid #c7c7cc;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+body.editing .edit-badge {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.editing .app-item,
+body.editing .featured-card {
+    animation: jiggle 0.3s infinite linear;
+    transform-origin: 50% 50%;
+}
+
+body.editing .app-item:nth-child(even) { animation-direction: reverse; animation-duration: 0.32s; }
+body.editing .app-item:nth-child(3n) { animation-duration: 0.28s; }
+
+@keyframes jiggle {
+    0% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+    100% { transform: rotate(-1deg); }
+}
+
+body.editing .app-item:hover,
+body.editing .featured-card:hover {
+    transform: scale(1) rotate(0); /* Disable hover scale while editing */
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 12vh auto;
+    padding: 32px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+    position: relative;
+    animation: modalScaleIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes modalScaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.close-modal {
+    font-size: 24px;
+    color: #86868b;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 12px;
+    background: rgba(0,0,0,0.02);
+    font-size: 15px;
+    transition: all 0.2s;
+}
+.form-group input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    flex: 1;
+    transition: filter 0.2s;
+}
+.btn:active { filter: brightness(0.9); }
+
+.btn-primary { background: var(--accent-blue); color: white; }
+.btn-secondary { background: #e8e8ed; color: var(--text-primary); }
+.btn-danger { background: #ff3b30; color: white; }
+
+/* Empty state */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    font-size: 15px;
+}

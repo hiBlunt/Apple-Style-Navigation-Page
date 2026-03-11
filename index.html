@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-brand">Navigation</a>
+            <div class="nav-search">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" class="search-icon"><path d="M21 21l-4.35-4.35M19 11a8 8 0 11-16 0 8 8 0 0116 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <input type="text" id="searchInput" placeholder="Search apps, sites, and links...">
+                </div>
+            </div>
+            <button id="editBtn" class="nav-edit">Edit Mode</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div id="mainContent">
+            <!-- Dynamic content injected here -->
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content password-prompt">
+            <h2>Admin Access</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 24px; font-size: 14px;">Please enter your passcode to modify the navigation layout.</p>
+            <div class="form-group">
+                <input type="password" id="adminPassword" placeholder="Password" style="letter-spacing: 0.3em; text-align: center;" autofocus />
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancelPassword">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmPassword">Unlock</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Link Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Link</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="linkId">
+                <input type="hidden" id="categoryId">
+                
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="linkTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="url" id="linkUrl" required>
+                </div>
+                <div class="form-group">
+                    <label>Description (Optional, for Discover section)</label>
+                    <input type="text" id="linkDesc">
+                </div>
+                <div class="form-group">
+                    <label>Icon URL (Optional)</label>
+                    <input type="url" id="linkIcon">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-danger" id="deleteBtn">Delete</button>
+                    <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveLinkBtn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Category</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <form id="categoryForm">
+                <div class="form-group">
+                    <label>Category Title</label>
+                    <input type="text" id="catTitle" required>
+                </div>
+                <div class="form-group" style="display:flex; align-items:center; gap:8px;">
+                    <input type="checkbox" id="catIsFeatured" style="width:16px;">
+                    <label style="margin:0; font-size:14px;">Make this a "Discover" styled featured section</label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Category</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

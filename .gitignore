@@ -1,0 +1,32 @@
+# Build artifacts
+nav-server
+nav-server.exe
+*.exe
+
+# Security / Secrets
+# DO NOT commit the authentication file containing the password hash
+.auth
+
+# Configuration backups
+config.json.bak
+*.bak
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# AI / Project Documentation (Not meant for open source tree)
+task.md
+project_blueprint.md
+implementation_plan.md
+testing_checklist.md
+walkthrough.md
+ai_collaboration_guide.md
+ai交互准则.md
+.gemini/
+
+# OS generated files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,59 @@
+{
+  "settings": {
+    "title": "Navigation",
+    "featuredTitle": "Discover"
+  },
+  "categories": [
+    {
+      "id": "cat-featured",
+      "title": "Discover",
+      "isFeatured": true,
+      "links": [
+        { "id": "f-1", "title": "Apple", "description": "Innovative hardware, software, and services.", "url": "https://www.apple.com", "icon": "https://www.apple.com/favicon.ico" },
+        { "id": "f-2", "title": "GitHub", "description": "Where the world builds software.", "url": "https://github.com", "icon": "https://github.githubassets.com/favicons/favicon.svg" },
+        { "id": "f-3", "title": "YouTube", "description": "Enjoy the videos and music you love.", "url": "https://youtube.com", "icon": "https://www.youtube.com/favicon.ico" }
+      ]
+    },
+    {
+      "id": "cat-work",
+      "title": "Productivity",
+      "links": [
+        { "id": "w-1", "title": "Gmail", "url": "https://mail.google.com", "icon": "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" },
+        { "id": "w-2", "title": "Drive", "url": "https://drive.google.com", "icon": "https://ssl.gstatic.com/images/branding/product/2x/drive_2020q4_32dp.png" },
+        { "id": "w-3", "title": "Notion", "url": "https://notion.so", "icon": "https://www.notion.so/images/favicon.ico" },
+        { "id": "w-4", "title": "Slack", "url": "https://slack.com", "icon": "https://a.slack-edge.com/80588/marketing/img/meta/favicon-32.png" },
+        { "id": "w-5", "title": "Figma", "url": "https://figma.com", "icon": "https://static.figma.com/app/icon/1/favicon.ico" },
+        { "id": "w-6", "title": "Linear", "url": "https://linear.app", "icon": "https://linear.app/favicon.ico" },
+        { "id": "w-7", "title": "Trello", "url": "https://trello.com", "icon": "https://trello.com/favicon.ico" }
+      ]
+    },
+    {
+      "id": "cat-dev",
+      "title": "Developer Tools",
+      "links": [
+        { "id": "d-1", "title": "StackOverflow", "url": "https://stackoverflow.com", "icon": "https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico" },
+        { "id": "d-2", "title": "MDN Docs", "url": "https://developer.mozilla.org", "icon": "https://developer.mozilla.org/favicon-48x48.cbbd161b.png" },
+        { "id": "d-3", "title": "Vercel", "url": "https://vercel.com", "icon": "https://assets.vercel.com/image/upload/q_auto/front/favicon/vercel/180x180.png" },
+        { "id": "d-4", "title": "AWS", "url": "https://aws.amazon.com", "icon": "https://a0.awsstatic.com/libra-css/images/logos/aws_smile-header-desktop-en-white_59x35.png" },
+        { "id": "d-5", "title": "Docker", "url": "https://docker.com", "icon": "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" },
+        { "id": "d-6", "title": "NPM", "url": "https://npmjs.com", "icon": "https://static-production.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png" },
+        { "id": "d-7", "title": "CodePen", "url": "https://codepen.io", "icon": "https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" },
+        { "id": "d-8", "title": "V2EX", "url": "https://www.v2ex.com", "icon": "https://www.v2ex.com/static/favicon.ico" },
+        { "id": "d-9", "title": "ChatGPT", "url": "https://chat.openai.com", "icon": "https://chat.openai.com/favicon.ico" }
+      ]
+    },
+    {
+      "id": "cat-social",
+      "title": "Social & Entertainment",
+      "links": [
+        { "id": "s-1", "title": "Twitter", "url": "https://twitter.com", "icon": "https://abs.twimg.com/favicons/twitter.2.ico" },
+        { "id": "s-2", "title": "Bilibili", "url": "https://bilibili.com", "icon": "https://www.bilibili.com/favicon.ico" },
+        { "id": "s-3", "title": "Reddit", "url": "https://reddit.com", "icon": "https://www.redditstatic.com/desktop2x/img/favicon/favicon-32x32.png" },
+        { "id": "s-4", "title": "Instagram", "url": "https://instagram.com", "icon": "https://www.instagram.com/static/images/ico/favicon.ico/36b30072740c.ico" },
+        { "id": "s-5", "title": "Weibo", "url": "https://weibo.com", "icon": "https://weibo.com/favicon.ico" },
+        { "id": "s-6", "title": "Netflix", "url": "https://netflix.com", "icon": "https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico" },
+        { "id": "s-7", "title": "Twitch", "url": "https://twitch.tv", "icon": "https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png" }
+      ]
+    }
+  ]
+}

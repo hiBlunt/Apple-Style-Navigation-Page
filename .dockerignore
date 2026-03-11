@@ -1,0 +1,28 @@
+# Version Control
+.git
+.gitignore
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Compiled Binaries
+*.exe
+nav-server
+
+# AI and Project Documentation
+task.md
+project_blueprint.md
+implementation_plan.md
+testing_checklist.md
+walkthrough.md
+ai_collaboration_guide.md
+ai交互准则.md
+README.md
+.gemini/
+
+# OS generated files
+.DS_Store
+Thumbs.db

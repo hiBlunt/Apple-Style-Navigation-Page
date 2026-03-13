@@ -120,6 +120,11 @@ Optional environment variables:
 sudo SERVICE_NAME=apple-nav-page PORT=8080 HOST=0.0.0.0 INSTALL_DIR=/opt/apple-nav-page ./deploy-systemd.sh
 ```
 
+By default, redeployments keep the existing server-side `config.json` and `.auth` in the install directory. If you want to overwrite them from the repo copy during deployment, set:
+```bash
+sudo FORCE_OVERWRITE_CONFIG=1 FORCE_OVERWRITE_AUTH=1 ./deploy-systemd.sh
+```
+
 The script will:
 - build the Go binary
 - install the binary and required static files into the target directory

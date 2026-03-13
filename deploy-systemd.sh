@@ -13,6 +13,8 @@ SYSTEMD_UNIT_DIR="${SYSTEMD_UNIT_DIR:-/etc/systemd/system}"
 SYSTEMCTL_BIN="${SYSTEMCTL_BIN:-systemctl}"
 SKIP_ROOT_CHECK="${SKIP_ROOT_CHECK:-0}"
 SKIP_CHOWN="${SKIP_CHOWN:-0}"
+FORCE_OVERWRITE_CONFIG="${FORCE_OVERWRITE_CONFIG:-0}"
+FORCE_OVERWRITE_AUTH="${FORCE_OVERWRITE_AUTH:-0}"
 SYSTEMD_UNIT="${SYSTEMD_UNIT_DIR}/${SERVICE_NAME}.service"
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -74,8 +76,18 @@ install_files() {
     install -m 0644 "${PROJECT_DIR}/index.html" "${INSTALL_DIR}/index.html"
     install -m 0644 "${PROJECT_DIR}/style.css" "${INSTALL_DIR}/style.css"
     install -m 0644 "${PROJECT_DIR}/script.js" "${INSTALL_DIR}/script.js"
-    install -m 0644 "${PROJECT_DIR}/config.json" "${INSTALL_DIR}/config.json"
-    install -m 0600 "${PROJECT_DIR}/.auth" "${INSTALL_DIR}/.auth"
+
+    if [[ ! -f "${INSTALL_DIR}/config.json" || "${FORCE_OVERWRITE_CONFIG}" == "1" ]]; then
+        install -m 0644 "${PROJECT_DIR}/config.json" "${INSTALL_DIR}/config.json"
+    else
+        echo "Keeping existing config: ${INSTALL_DIR}/config.json"
+    fi
+
+    if [[ ! -f "${INSTALL_DIR}/.auth" || "${FORCE_OVERWRITE_AUTH}" == "1" ]]; then
+        install -m 0600 "${PROJECT_DIR}/.auth" "${INSTALL_DIR}/.auth"
+    else
+        echo "Keeping existing auth: ${INSTALL_DIR}/.auth"
+    fi
 
     if [[ "${SKIP_CHOWN}" != "1" ]]; then
         chown -R "${RUN_USER}:${RUN_GROUP}" "${INSTALL_DIR}"
@@ -118,6 +130,8 @@ print_summary() {
     echo "Service: ${SERVICE_NAME}"
     echo "Install dir: ${INSTALL_DIR}"
     echo "Listen address: http://${HOST}:${PORT}"
+    echo "config.json overwrite: ${FORCE_OVERWRITE_CONFIG}"
+    echo ".auth overwrite: ${FORCE_OVERWRITE_AUTH}"
     echo "Manage service with: systemctl status|restart|stop ${SERVICE_NAME}"
 }
 

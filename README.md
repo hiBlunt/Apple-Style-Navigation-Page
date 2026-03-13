@@ -164,7 +164,15 @@ The configuration and link structure are stored in `config.json`.
 The password is required to save edits. By default, it is hash-checked against the `passwordHash` in `config.json`. 
 
 To change the edit mode password:
-1. Generate a SHA-256 hash of your new password. (You can use an online tool, or run `echo -n "yourNewPass" | shasum -a 256` on Linux/Mac).
+1. Generate a SHA-256 hash of your new password.
+   On Linux:
+   ```bash
+   printf '%s' 'yourNewPass' | sha256sum | awk '{print $1}'
+   ```
+   On macOS:
+   ```bash
+   printf '%s' 'yourNewPass' | shasum -a 256 | awk '{print $1}'
+   ```
 2. Open the `.auth` file in the root directory.
 3. Replace the old hash with your new valid SHA-256 string (just the string itself, no JSON formatting needed).
 4. Restart the server.

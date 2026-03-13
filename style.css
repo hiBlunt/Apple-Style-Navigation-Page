@@ -317,6 +317,10 @@ body.editing .featured-card {
     transform-origin: 50% 50%;
 }
 
+body.editing .featured-card {
+    overflow: visible;
+}
+
 body.editing .app-item:nth-child(even) { animation-direction: reverse; animation-duration: 0.32s; }
 body.editing .app-item:nth-child(3n) { animation-duration: 0.28s; }
 

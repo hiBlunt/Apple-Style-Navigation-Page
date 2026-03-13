@@ -106,6 +106,32 @@ sudo systemctl start nav-server
 sudo systemctl status nav-server
 ```
 
+#### One-Click Deployment Script
+This repo also includes a one-click deployment script for Linux servers with `systemd`.
+
+Run it from the project root:
+```bash
+chmod +x deploy-systemd.sh
+sudo ./deploy-systemd.sh
+```
+
+Optional environment variables:
+```bash
+sudo SERVICE_NAME=apple-nav-page PORT=8080 HOST=0.0.0.0 INSTALL_DIR=/opt/apple-nav-page ./deploy-systemd.sh
+```
+
+The script will:
+- build the Go binary
+- install the binary and required static files into the target directory
+- create `/etc/systemd/system/<service>.service`
+- enable and start the service automatically
+
+After deployment, manage it with:
+```bash
+sudo systemctl status apple-nav-page
+sudo journalctl -u apple-nav-page -f
+```
+
 #### Option D: Docker (Recommended for Containerized Environments)
 If you prefer running the application inside a Docker container, we provide a multi-stage `Dockerfile` that produces a tiny, zero-dependency Alpine image.
 
